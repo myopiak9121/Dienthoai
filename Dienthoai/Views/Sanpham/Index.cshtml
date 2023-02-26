@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Dienthoai.Models.Sanpham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Hangsanxuat.Tenhang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hedieuhanh.Tenhdh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tensp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Giatien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Soluong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mota)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Thesim)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bonhotrong)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Ram)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Anhbia)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hangsanxuat.Tenhang)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hedieuhanh.Tenhdh)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tensp)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Giatien)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soluong)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mota)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thesim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bonhotrong)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Ram)
+            </td>
+            <td>
+                <a href="@Url.Action("xemchitiet", new {@Masp=item.Masp })">
+                    <img src="@Url.Content("~/HinhanhSP/" +item.Anhbia)" width="50" height="50" />
+                </a>
+            </td>
+
+        </tr>
+    }
+
+</table>

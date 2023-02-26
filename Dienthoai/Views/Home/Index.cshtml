@@ -1,0 +1,92 @@
+﻿@{ ViewBag.Title = "TTT SHOP"; }
+
+@model PagedList.IPagedList<Dienthoai.Models.Sanpham>
+
+@using PagedList.Mvc;
+
+<div class="row">
+    <div class="col-md-12">
+        <img class="img-responsive" src="~/HinhanhSP/banner6.jpg" />
+    </div>
+    <div class="col-md-8">
+        <img src="~/HinhanhSP/bannerqc.gif" class="img-responsive" alt="" />
+    </div>
+
+    <div class="col-md-4 text-center ">
+        <h1>DAILY DEALS</h1>
+
+        <h3 style="color:red">Săn iphone thả ga</h3>
+        <h3 style="color:black">Giảm đến 25%</h3>
+        <h3 style="color: black">Voucher 1 triệu</h3>
+    </div>
+
+</div>
+
+
+
+
+
+<br />
+
+@*
+    <div class="dt">
+
+        @Html.Action("dtiphonePartial", "Sanpham")
+    </div>
+    <div class="dt">
+
+        @Html.Action("dtsamsungpartial", "Sanpham")
+    </div>
+    <div class="dt">
+
+        @Html.Action("dtxiaomipartial", "Sanpham")
+    </div>
+*@
+<div class="main__content">
+    @*<ul class="main__content__list">
+         @foreach (var item in Model)
+            {
+                <li class="main__content__item">
+
+                        <img src="@Url.Content("~/HinhanhSP/" +item.Anhbia)" alt="Alternate Text" class="main__content__item__img" />
+                        <p class="main__content__item__title">@item.Tensp</p>
+                        <p class="main__content__item__price red">@item.Giatien</p>
+
+                    <div style="margin-bottom: 16px; display: flex; justify-content: flex-start;padding: 0 16px; width:100%;">
+                        <a href="#" class="main__content__item__cart-btn">Add to Cart</a>
+                    </div>
+
+                </li>
+            }
+
+    </ul>*@
+   <div class="row ">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-3">
+                <div class="card" style="width:18rem;">
+                    @*<a href="@Url.Action("Sanpham", new {@Masp=item.Masp })">*@
+                    <a href="@Url.Action("xemchitiet", new {@Masp=item.Masp })">
+                        <img src=@Url.Content("~/HinhanhSP/"+item.Anhbia) class="img-responsive" alt="" width="150" height="150" />
+                    </a>
+                    @*   <img src="@Url.Content("~/HinhanhSP/" +item.Anhbia)" width="150" height="150" />*@
+
+                    <div class="card-body">
+                        <p class="card-text">@item.Tensp</p>
+                        <p class="card-text">@item.Giatien</p>
+                    </div>
+
+                </div>
+            </div>}
+    </div>
+
+</div>
+<!-- Thêm mã phân trang -->
+<br />
+
+    Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page }))
+
+    <!-- Kết thúc -->
